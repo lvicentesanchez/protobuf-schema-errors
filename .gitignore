@@ -1,0 +1,9 @@
+.bloop/
+.bsp/
+.metals/
+.vscode/
+
+metals.sbt
+
+docker/connect-plugins/**/
+target/

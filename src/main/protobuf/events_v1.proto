@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "example.schema.event.v1";
+
+package example.event.v1;
+
+message Event {
+  string event_id = 1;
+  Target target = 2;
+
+  message Target {
+    oneof payload {
+      string lightbulb_id = 1;
+      string switch_id = 2;
+    }
+  }
+
+  oneof payload {
+    AutomatedAction automated = 10;
+    ManualAction manual = 11;
+  }
+
+  message AutomatedAction {
+    oneof payload {
+      Action action = 1;
+    }
+  }
+
+  message ManualAction {
+    oneof payload {
+      Action action = 1;
+    }
+  }
+
+  enum Action {
+    ON  = 0;
+    OFF = 1;
+  }
+
+}
